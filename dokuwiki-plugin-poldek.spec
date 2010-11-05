@@ -47,7 +47,7 @@ cd -
 tag=%{name}-%(echo %{version} | tr . _)-%(echo %{release} | tr . _)
 
 cd %{_specdir}
-if [ $(cvs status -v %{name}.spec | egrep -c "$tag[[:space:]]") != 0 ]; then
+if [ $(cvs status -v %{name}.spec | grep -Ec "$tag[[:space:]]") != 0 ]; then
 	: "Tag $tag already exists"
 	exit 1
 fi
