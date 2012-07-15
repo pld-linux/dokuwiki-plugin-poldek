@@ -2,12 +2,12 @@
 Summary:	DokuWiki poldek Plugin
 Summary(pl.UTF-8):	Wtyczka Include (dołączania) dla poldek
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20090129
+Version:	20120715
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
-Source0:	https://github.com/glensc/dokuwiki-plugin-poldek/tarball/master/%{plugin}.tgz
-# Source0-md5:	2defb6b14ffa7d3d09f75de3db6f1d54
+Source0:	https://github.com/glensc/dokuwiki-plugin-poldek/tarball/%{version}/%{plugin}-%{version}.tgz
+# Source0-md5:	f4373b088a214e595534588ea2a8270e
 URL:		https://github.com/glensc/dokuwiki-plugin-poldek
 Requires:	dokuwiki >= 20080505
 Requires:	poldek
@@ -16,6 +16,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		dokudir		/usr/share/dokuwiki
 %define		plugindir	%{dokudir}/lib/plugins/%{plugin}
+%define		find_lang 	%{_usrlibrpm}/dokuwiki-find-lang.sh %{buildroot}
 
 %description
 Plugin to display package NVR from repository.
@@ -37,11 +38,14 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{plugindir}
 cp -a . $RPM_BUILD_ROOT%{plugindir}
 
+%find_lang %{name}.lang
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %dir %{plugindir}
 %{plugindir}/*.php
 %{plugindir}/*.txt
+%{plugindir}/conf
