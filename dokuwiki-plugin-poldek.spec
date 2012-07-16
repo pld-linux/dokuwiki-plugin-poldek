@@ -2,12 +2,12 @@
 Summary:	DokuWiki poldek Plugin
 Summary(pl.UTF-8):	Wtyczka Include (dołączania) dla poldek
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20120715
+Version:	20120716
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/glensc/dokuwiki-plugin-poldek/tarball/%{version}/%{plugin}-%{version}.tgz
-# Source0-md5:	f4373b088a214e595534588ea2a8270e
+# Source0-md5:	ce18635deee1d671f4293fe5d8f4dbda
 URL:		https://github.com/glensc/dokuwiki-plugin-poldek
 Requires:	dokuwiki >= 20080505
 Requires:	poldek
