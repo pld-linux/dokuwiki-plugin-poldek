@@ -1,15 +1,17 @@
 %define		plugin		poldek
+%define		php_min_version 5.3.0
 Summary:	DokuWiki poldek Plugin
 Summary(pl.UTF-8):	Wtyczka Include (dołączania) dla poldek
 Name:		dokuwiki-plugin-%{plugin}
-Version:	20130610
+Version:	20160818
 Release:	1
 License:	GPL v2
 Group:		Applications/WWW
 Source0:	https://github.com/glensc/dokuwiki-plugin-poldek/archive/%{version}/%{plugin}-%{version}.tar.gz
-# Source0-md5:	82625a9f8fdcc6c2baaa8391847e0b04
+# Source0-md5:	592cba069fc705121cced99b55d81548
 URL:		https://github.com/glensc/dokuwiki-plugin-poldek
 Requires:	dokuwiki >= 20080505
+Requires:	php(core) >= %{php_min_version}
 Requires:	poldek
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -27,6 +29,7 @@ Plugin to display package NVR from repository.
 %prep
 %setup -q
 
+%build
 version=$(awk '/date/{print $2}' plugin.info.txt)
 if [ "$(echo "$version" | tr -d -)" != %{version} ]; then
 	: %%{version} mismatch
